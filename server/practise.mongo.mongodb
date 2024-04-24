@@ -1,0 +1,53 @@
+use('test')
+
+db.sales.drop();
+
+db.sales.insertMany([
+    { item: "abc", price: 10, quantity: 2, date: new Date("2014-03-01T08:00:00Z") },
+    { item: "jkl", price: 20, quantity: 1, date: new Date("2014-03-01T09:00:00Z") },
+    { item: "xyz", price: 5, quantity: 5, date: new Date("2014-03-15T09:00:00Z") },
+    { item: "xyz", price: 5, quantity: 10, date: new Date("2014-04-04T11:21:39.736Z") },
+    { item: "abc", price: 10, quantity: 10, date: new Date("2014-04-04T21:23:13.331Z") },
+    { item: "xyz", price: 5, quantity: 5, date: new Date("2014-04-05T16:00:00Z") }
+]);
+
+
+db.sales.find({item:"abc"})
+db.sales.find({item:"abc"},{item:1,quantity:1,_id:0})
+db.sales.find(
+    {$and:[
+        {item:"abc"},
+        {quantity:{$lt:5}}
+    ]},
+    {price:0,_id:0}
+)
+
+db.sales.find(
+    {$and:[
+        {price:{$gte:10}},
+        {price:{$lte:20}}
+    ]},
+    {date:0,_id:0}
+
+    
+)
+
+db.sales.find(
+    {price: {$lte:20}, quantity: {$gte:2}},
+    
+)
+
+db.sales.updateMany(
+    {item:"abc"},
+    {$set:{price:20, quantity:10}}
+)
+
+db.sales.find({item:"abc"})
+
+db.inventory.insertOne({
+    item:['abc','jkl','xyz'],
+})
+
+db.inventory.find()
+
+db.users.find();

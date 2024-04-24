@@ -1,0 +1,13 @@
+.signup{
+    border-radius: 15px;
+    box-shadow: 5px 10px 15px;
+}
+.signup button{
+    
+}
+.signup.pwd-strength{
+    border: 1px solid #0000;
+    border-radius: 15px;
+    box-shadow: 4px 10px 15px;
+    padding: 1rem;
+}
